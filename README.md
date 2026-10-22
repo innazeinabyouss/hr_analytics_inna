@@ -15,6 +15,10 @@ src/         → le code, rangé par tâche
 outputs/     → graphiques produits
 main.py      → lance tout
 ```
+## Données
+Télécharger `aug_train.csv` sur Kaggle :
+https://www.kaggle.com/datasets/arashnic/hr-analytics-job-change-of-data-scientists
+Puis le placer dans le dossier `data/`.
 
 ## Lancer le projet
 ```
