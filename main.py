@@ -20,8 +20,8 @@ for col in COLONNES_GRAPHIQUES:
 
 print("\n===== Modèle de prédiction =====")
 try:
-    from src.modele import entrainer_modele
-    modele = entrainer_modele(df)
+    from src.modele import comparer_modeles
+    comparer_modeles(df)
 except ImportError as erreur:
     print("Modèle non lancé : scikit-learn ne se charge pas sur cet ordinateur.")
     print("Détail :", erreur)
