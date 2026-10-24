@@ -1,28 +1,27 @@
+from src.config import CHEMIN_DONNEES, COLONNES_TEXTE, COLONNES_GRAPHIQUES
 from src.load_data import charger_donnees
 from src.explore import controle_qualite
 from src.analyse import taux_depart, comparer_chiffres
 from src.graphiques import graphique_taux
-from src.modele import entrainer_modele
 
-COLONNES = [
-    "gender", "relevent_experience", "enrolled_university",
-    "education_level", "major_discipline", "experience",
-    "company_size", "company_type", "last_new_job",
-]
-
-df = charger_donnees("data/aug_train.csv")
+df = charger_donnees(CHEMIN_DONNEES)
 
 controle_qualite(df)
 
-for col in COLONNES:
+for col in COLONNES_TEXTE:
     print("\n=====", col, "=====")
     print(taux_depart(df, col))
 
 print("\n===== Médianes chiffrées =====")
 print(comparer_chiffres(df))
 
-for col in ["education_level", "experience", "enrolled_university", "company_size"]:
+for col in COLONNES_GRAPHIQUES:
     graphique_taux(df, col)
 
 print("\n===== Modèle de prédiction =====")
-modele = entrainer_modele(df)
+try:
+    from src.modele import entrainer_modele
+    modele = entrainer_modele(df)
+except ImportError as erreur:
+    print("Modèle non lancé : scikit-learn ne se charge pas sur cet ordinateur.")
+    print("Détail :", erreur)

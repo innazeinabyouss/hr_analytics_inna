@@ -5,13 +5,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score, classification_report
 
-COLONNES_TEXTE = [
-    "gender", "relevent_experience", "enrolled_university",
-    "education_level", "major_discipline", "experience",
-    "company_size", "company_type", "last_new_job",
-]
-COLONNES_CHIFFRES = ["city_development_index", "training_hours"]
-
+from src.config import COLONNES_TEXTE, COLONNES_CHIFFRES
 
 def preparer(df):
     """Garde les colonnes utiles et remplace les vides par 'Vide'."""
