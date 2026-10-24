@@ -20,8 +20,15 @@ for col in COLONNES_GRAPHIQUES:
 
 print("\n===== Modèle de prédiction =====")
 try:
-    from src.modele import comparer_modeles
+    from src.modele import comparer_modeles, valider_modeles, importance_colonnes
+
     comparer_modeles(df)
+
+    print("\n===== Validation croisée (5 examens) =====")
+    valider_modeles(df)
+
+    print("\n===== Colonnes les plus importantes (Gradient Boosting) =====")
+    print(importance_colonnes(df))
 except ImportError as erreur:
     print("Modèle non lancé : scikit-learn ne se charge pas sur cet ordinateur.")
     print("Détail :", erreur)
