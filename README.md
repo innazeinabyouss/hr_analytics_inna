@@ -33,4 +33,8 @@ python main.py
 - Profil qui part le plus : peu d'expérience, en formation à temps plein, Graduate, ville peu développée.
 - Les cases vides sont un signal : 40 % de départ quand `company_size` est vide (contre 25 % en moyenne).
 - `training_hours` et `major_discipline` ont peu d'influence.
-- Modèle de base (régression logistique) : AUC 0,79. Il repère 79 % des départs (recall).
+- Comparaison de 3 modèles (même découpage, `random_state=42`) :
+  - Régression logistique (baseline) : AUC 0,790
+  - Random Forest : AUC 0,813
+  - Gradient Boosting : AUC 0,816 → +8 vrais départs pour 100 alertes vs la baseline
+- Limite : un seul découpage testé. Prochaine étape : validation croisée.
